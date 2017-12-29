@@ -14,14 +14,9 @@ public class WelcomeActivity extends AppCompatActivity {
         Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
             public void run() {
-                try {
-                    Thread.sleep(5000);
-                    Intent intent = new Intent(WelcomeActivity.this, LoginActivity.class);
-                    startActivity(intent);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
+                Intent intent = new Intent(WelcomeActivity.this, LoginActivity.class);
+                startActivity(intent);
             }
-        }, 3000);
+        }, 4000);
     }
 }

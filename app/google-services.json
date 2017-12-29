@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "1087317659015",
+    "firebase_url": "https://android-rgu-stellar.firebaseio.com",
+    "project_id": "android-rgu-stellar",
+    "storage_bucket": "android-rgu-stellar.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1087317659015:android:6ed88847aff294ab",
+        "android_client_info": {
+          "package_name": "com.space.anthony.stellar"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1087317659015-ouqnk70e66tpiej83s2a2pomhbs217e0.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.space.anthony.stellar",
+            "certificate_hash": "86a5ce8e0f43cdf604668d7456ade2aec6074c71"
+          }
+        },
+        {
+          "client_id": "1087317659015-votd92595c9g19vrf36ac3tn1h7lir1g.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDLAZk1kl8BTwj6bS_nCn0_EgFR0vYNwu8"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1087317659015-votd92595c9g19vrf36ac3tn1h7lir1g.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
