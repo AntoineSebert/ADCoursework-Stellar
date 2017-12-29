@@ -8,7 +8,7 @@
     tools:context="com.space.anthony.stellar.WelcomeActivity">
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="476dp"
@@ -24,7 +24,7 @@
         app:layout_constraintVertical_bias="0.032" />
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/welcomePicture"
         android:layout_width="200dp"
         android:layout_height="200dp"
         android:layout_marginBottom="156dp"
@@ -34,7 +34,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:layout_constraintTop_toBottomOf="@+id/title"
         app:srcCompat="@mipmap/ic_launcher_round"
         android:contentDescription="@string/WelcomeImageDescription" />
 
@@ -45,10 +45,12 @@
         android:layout_marginBottom="16dp"
         android:layout_marginEnd="108dp"
         android:layout_marginStart="109dp"
-        android:layout_marginTop="105dp"
+        android:layout_marginTop="8dp"
         android:text="@string/CreationText"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/progressBar" />
+        app:layout_constraintTop_toBottomOf="@+id/welcomePicture"
+        app:layout_constraintVertical_bias="1.0" />
 </android.support.constraint.ConstraintLayout>
