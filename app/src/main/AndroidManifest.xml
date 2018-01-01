@@ -29,6 +29,7 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.space.anthony.stellar.WelcomeActivity" />
         </activity>
+        <activity android:name=".MainMenuActivity"></activity>
     </application>
 
 </manifest>
