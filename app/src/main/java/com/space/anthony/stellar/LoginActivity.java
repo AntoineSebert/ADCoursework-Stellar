@@ -44,6 +44,12 @@ import java.util.concurrent.Executor;
 
 import static android.Manifest.permission.READ_CONTACTS;
 
+/*  https://github.com/firebase/quickstart-android/blob/master/auth/app/src/main/java/com/google/firebase/quickstart/auth/GoogleSignInActivity.java
+  * https://github.com/firebase/quickstart-android/blob/master/auth/app/src/main/res/layout/activity_google.xml
+  * https://github.com/firebase/quickstart-android/blob/master/auth/app/src/main/java/com/google/firebase/quickstart/auth/TwitterLoginActivity.java
+  * https://github.com/firebase/quickstart-android/blob/master/auth/app/src/main/res/layout/activity_twitter.xml
+*/
+
 /**
  * A login screen that offers login via email/password.
  */

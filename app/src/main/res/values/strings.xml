@@ -18,4 +18,8 @@
         completions."
     </string>
     <string name="background_main_menu">Planets background</string>
+    <string name="resume_button">Resume</string>
+    <string name="new_game_button">New game</string>
+    <string name="parameters_button">Parameters</string>
+    <string name="quit_button">Quit game</string>
 </resources>
