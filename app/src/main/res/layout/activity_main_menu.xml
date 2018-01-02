@@ -41,24 +41,29 @@
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
 			android:checked="false"
+			android:layout_margin="@dimen/activity_vertical_margin"
+			android:enabled="false"
 			android:text="@string/resume_button" />
 
 		<Button
 			android:id="@+id/new_game_button"
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
+			android:layout_margin="@dimen/activity_vertical_margin"
 			android:text="@string/new_game_button" />
 
 		<Button
 			android:id="@+id/parameters_button"
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
+			android:layout_margin="@dimen/activity_vertical_margin"
 			android:text="@string/parameters_button" />
 
 		<Button
 			android:id="@+id/quit_button"
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
+			android:layout_margin="@dimen/activity_vertical_margin"
 			android:text="@string/quit_button" />
 	</LinearLayout>
 
