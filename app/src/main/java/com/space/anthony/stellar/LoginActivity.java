@@ -125,13 +125,13 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 		}
 		if (shouldShowRequestPermissionRationale(READ_CONTACTS)) {
 			Snackbar.make(mEmailView, R.string.permission_rationale, Snackbar.LENGTH_INDEFINITE)
-					.setAction(android.R.string.ok, new View.OnClickListener() {
-						@Override
-						@TargetApi(Build.VERSION_CODES.M)
-						public void onClick(View v) {
-							requestPermissions(new String[]{READ_CONTACTS}, REQUEST_READ_CONTACTS);
-						}
-					});
+				.setAction(android.R.string.ok, new View.OnClickListener() {
+					@Override
+					@TargetApi(Build.VERSION_CODES.M)
+					public void onClick(View v) {
+						requestPermissions(new String[]{READ_CONTACTS}, REQUEST_READ_CONTACTS);
+					}
+				});
 		} else {
 			requestPermissions(new String[]{READ_CONTACTS}, REQUEST_READ_CONTACTS);
 		}
@@ -189,14 +189,11 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 		}
 
 		if (cancel) {
-			// There was an error; don't attempt login and focus the first
-			// form field with an error.
+			// There was an error; don't attempt login and focus the first form field with an error
 			focusView.requestFocus();
 		} else {
-			// Show a progress spinner, and kick off a background task to
-			// perform the user login attempt.
+			// Show a progress spinner, and kick off a background task to perform the user login attempt
 			showProgress(true);
-			FirebaseUser currentUser = mAuth.getCurrentUser();
 			mAuthTask = new UserLoginTask(email, password);
 			mAuthTask.execute((Void) null);
 		}
@@ -213,44 +210,40 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 	}
 
 	// Shows the progress UI and hides the login form
-	@TargetApi(Build.VERSION_CODES.HONEYCOMB_MR2)
 	private void showProgress(final boolean show) {
 		int shortAnimTime = getResources().getInteger(android.R.integer.config_shortAnimTime);
 
 		mLoginFormView.setVisibility(show ? View.GONE : View.VISIBLE);
 		mLoginFormView.animate().setDuration(shortAnimTime).alpha(
-				show ? 0 : 1).setListener(new AnimatorListenerAdapter() {
-				@Override
-				public void onAnimationEnd(Animator animation) {
+			show ? 0 : 1).setListener(new AnimatorListenerAdapter() {
+			@Override
+			public void onAnimationEnd(Animator animation) {
 				mLoginFormView.setVisibility(show ? View.GONE : View.VISIBLE);
 			}
-			});
+		});
 
 		mProgressView.setVisibility(show ? View.VISIBLE : View.GONE);
 		mProgressView.animate().setDuration(shortAnimTime).alpha(
-				show ? 1 : 0).setListener(new AnimatorListenerAdapter() {
-				@Override
-				public void onAnimationEnd(Animator animation) {
+			show ? 1 : 0).setListener(new AnimatorListenerAdapter() {
+			@Override
+			public void onAnimationEnd(Animator animation) {
 				mProgressView.setVisibility(show ? View.VISIBLE : View.GONE);
 			}
-			});
+		});
 	}
 
 	@Override
 	public Loader<Cursor> onCreateLoader(int i, Bundle bundle) {
 		return new CursorLoader(this,
-				// Retrieve data rows for the device user's 'profile' contact.
-				Uri.withAppendedPath(ContactsContract.Profile.CONTENT_URI,
-						ContactsContract.Contacts.Data.CONTENT_DIRECTORY), ProfileQuery.PROJECTION,
-
-				// Select only email addresses.
-				ContactsContract.Contacts.Data.MIMETYPE +
-						" = ?", new String[]{ContactsContract.CommonDataKinds.Email
-				.CONTENT_ITEM_TYPE},
-
-				// Show primary email addresses first. Note that there won't be
-				// a primary email address if the user hasn't specified one.
-				ContactsContract.Contacts.Data.IS_PRIMARY + " DESC");
+			// Retrieve data rows for the device user's 'profile' contact.
+			Uri.withAppendedPath(ContactsContract.Profile.CONTENT_URI,
+					ContactsContract.Contacts.Data.CONTENT_DIRECTORY), ProfileQuery.PROJECTION,
+			// Select only email addresses.
+			ContactsContract.Contacts.Data.MIMETYPE +
+					" = ?", new String[]{ContactsContract.CommonDataKinds.Email.CONTENT_ITEM_TYPE},
+			// Show primary email addresses first. Note that there won't be
+			// a primary email address if the user hasn't specified one.
+			ContactsContract.Contacts.Data.IS_PRIMARY + " DESC");
 	}
 
 	@Override
@@ -287,7 +280,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 		int IS_PRIMARY = 1;
 	}
 
-	// Represents an asynchronous login/registration task used to authenticate  the user
+	// Represents an asynchronous login/registration task used to authenticate the user
 	public class UserLoginTask extends AsyncTask<Void, Void, Boolean> implements OnCompleteListener<AuthResult> {
 
 		private final String mEmail;
@@ -311,37 +304,33 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 		}
 
 		private void signIn() {
-			// [START sign_in_with_email]
 			mAuth.signInWithEmailAndPassword(mEmail, mPassword)
-					.addOnCompleteListener(LoginActivity.this, new OnCompleteListener<AuthResult>() {
-						@Override
-						public void onComplete(@NonNull Task<AuthResult> task) {
-							if (task.isSuccessful()) {
-								currentUser = mAuth.getCurrentUser();
-							} else {
-								Toast.makeText(LoginActivity.this, "Authentication failed.",
-										Toast.LENGTH_SHORT).show();
-							}
+				.addOnCompleteListener(LoginActivity.this, new OnCompleteListener<AuthResult>() {
+					@Override
+					public void onComplete(@NonNull Task<AuthResult> task) {
+						if (task.isSuccessful()) {
+							currentUser = mAuth.getCurrentUser();
+						} else {
+							Toast.makeText(LoginActivity.this, "Sign in: Authentication failed.",
+									Toast.LENGTH_SHORT).show();
 						}
-					});
-			// [END sign_in_with_email]
+					}
+				});
 		}
 
 		private void signUp() {
-			// [START create_user_with_email]
 			mAuth.createUserWithEmailAndPassword(mEmail, mPassword)
-					.addOnCompleteListener(LoginActivity.this, new OnCompleteListener<AuthResult>() {
-						@Override
-						public void onComplete(@NonNull Task<AuthResult> task) {
-							if (task.isSuccessful()) {
-								currentUser = mAuth.getCurrentUser();
-							} else {
-								Toast.makeText(LoginActivity.this, "Authentication failed.",
-										Toast.LENGTH_SHORT).show();
-							}
+				.addOnCompleteListener(LoginActivity.this, new OnCompleteListener<AuthResult>() {
+					@Override
+					public void onComplete(@NonNull Task<AuthResult> task) {
+						if (task.isSuccessful()) {
+							currentUser = mAuth.getCurrentUser();
+						} else {
+							Toast.makeText(LoginActivity.this, "Sign up: Authentication failed.",
+									Toast.LENGTH_SHORT).show();
 						}
-					});
-			// [END create_user_with_email]
+					}
+				});
 		}
 
 		@Override
