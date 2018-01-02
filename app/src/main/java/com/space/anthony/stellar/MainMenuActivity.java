@@ -64,6 +64,16 @@ public class MainMenuActivity extends AppCompatActivity {
 			}
 		});
 
+		// PARAMETERS //////////////////////////////////////////////////////////////////////////////
+		Button parametersButton = findViewById(R.id.parameters_button);
+		parametersButton.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				finish();
+				Intent intent = new Intent(MainMenuActivity.this, ParametersActivity.class);
+				startActivity(intent);
+			}
+		});
 
 		// QUIT ////////////////////////////////////////////////////////////////////////////////////
 		Button quitButton = findViewById(R.id.quit_button);

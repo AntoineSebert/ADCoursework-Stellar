@@ -20,14 +20,11 @@ import android.os.Build;
 import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.inputmethod.EditorInfo;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -40,7 +37,6 @@ import com.google.firebase.auth.FirebaseUser;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.Executor;
 
 import static android.Manifest.permission.READ_CONTACTS;
 
@@ -310,6 +306,8 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 					public void onComplete(@NonNull Task<AuthResult> task) {
 						if (task.isSuccessful()) {
 							currentUser = mAuth.getCurrentUser();
+							Toast.makeText(LoginActivity.this, "Sign in: Authentication succeed.",
+									Toast.LENGTH_SHORT).show();
 						} else {
 							Toast.makeText(LoginActivity.this, "Sign in: Authentication failed.",
 									Toast.LENGTH_SHORT).show();
@@ -325,6 +323,8 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 					public void onComplete(@NonNull Task<AuthResult> task) {
 						if (task.isSuccessful()) {
 							currentUser = mAuth.getCurrentUser();
+							Toast.makeText(LoginActivity.this, "Sign up: Registration succeed.",
+									Toast.LENGTH_SHORT).show();
 						} else {
 							Toast.makeText(LoginActivity.this, "Sign up: Authentication failed.",
 									Toast.LENGTH_SHORT).show();
