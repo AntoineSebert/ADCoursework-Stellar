@@ -50,18 +50,12 @@ import static android.Manifest.permission.READ_CONTACTS;
   * https://github.com/firebase/quickstart-android/blob/master/auth/app/src/main/res/layout/activity_twitter.xml
 */
 
-/**
- * A login screen that offers login via email/password.
- */
+// A login screen that offers login via email/password
 public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<Cursor> {
 
-	/**
-	 * Id to identity READ_CONTACTS permission request.
-	 */
+	// Id to identity READ_CONTACTS permission request
 	private static final int REQUEST_READ_CONTACTS = 0;
-	/**
-	 * Keep track of the login task to ensure we can cancel it if requested.
-	 */
+	// Keep track of the login task to ensure we can cancel it if requested
 	private UserLoginTask mAuthTask = null;
 
 	// UI references.
@@ -79,7 +73,9 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_login);
 
-		setupActionBar();
+		if(getSupportActionBar() != null){
+			getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+		}
 
 		// Set up the login form.
 		mEmailView = findViewById(R.id.email);
@@ -112,17 +108,6 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 		// [END initialize_auth]
 	}
 
-	/**
-	 * Set up the {@link android.app.ActionBar}, if the API is available.
-	 */
-	@TargetApi(Build.VERSION_CODES.HONEYCOMB)
-	private void setupActionBar() {
-		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
-			// Show the Up button in the action bar.
-			getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-		}
-	}
-
 	private void populateAutoComplete() {
 		if (!mayRequestContacts()) {
 			return;
@@ -153,9 +138,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 		return false;
 	}
 
-	/**
-	 * Callback received when a permissions request has been completed.
-	 */
+	// Callback received when a permissions request has been completed
 	@Override
 	public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions,
 	                                       @NonNull int[] grantResults) {
@@ -229,40 +212,28 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 		return password.length() > 4;
 	}
 
-	/**
-	 * Shows the progress UI and hides the login form.
-	 */
+	// Shows the progress UI and hides the login form
 	@TargetApi(Build.VERSION_CODES.HONEYCOMB_MR2)
 	private void showProgress(final boolean show) {
-		// On Honeycomb MR2 we have the ViewPropertyAnimator APIs, which allow
-		// for very easy animations. If available, use these APIs to fade-in
-		// the progress spinner.
-		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB_MR2) {
-			int shortAnimTime = getResources().getInteger(android.R.integer.config_shortAnimTime);
+		int shortAnimTime = getResources().getInteger(android.R.integer.config_shortAnimTime);
 
-			mLoginFormView.setVisibility(show ? View.GONE : View.VISIBLE);
-			mLoginFormView.animate().setDuration(shortAnimTime).alpha(
-					show ? 0 : 1).setListener(new AnimatorListenerAdapter() {
+		mLoginFormView.setVisibility(show ? View.GONE : View.VISIBLE);
+		mLoginFormView.animate().setDuration(shortAnimTime).alpha(
+				show ? 0 : 1).setListener(new AnimatorListenerAdapter() {
 				@Override
 				public void onAnimationEnd(Animator animation) {
-					mLoginFormView.setVisibility(show ? View.GONE : View.VISIBLE);
-				}
+				mLoginFormView.setVisibility(show ? View.GONE : View.VISIBLE);
+			}
 			});
 
-			mProgressView.setVisibility(show ? View.VISIBLE : View.GONE);
-			mProgressView.animate().setDuration(shortAnimTime).alpha(
-					show ? 1 : 0).setListener(new AnimatorListenerAdapter() {
+		mProgressView.setVisibility(show ? View.VISIBLE : View.GONE);
+		mProgressView.animate().setDuration(shortAnimTime).alpha(
+				show ? 1 : 0).setListener(new AnimatorListenerAdapter() {
 				@Override
 				public void onAnimationEnd(Animator animation) {
-					mProgressView.setVisibility(show ? View.VISIBLE : View.GONE);
-				}
+				mProgressView.setVisibility(show ? View.VISIBLE : View.GONE);
+			}
 			});
-		} else {
-			// The ViewPropertyAnimator APIs are not available, so simply show
-			// and hide the relevant UI components.
-			mProgressView.setVisibility(show ? View.VISIBLE : View.GONE);
-			mLoginFormView.setVisibility(show ? View.GONE : View.VISIBLE);
-		}
 	}
 
 	@Override
@@ -316,10 +287,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 		int IS_PRIMARY = 1;
 	}
 
-	/**
-	 * Represents an asynchronous login/registration task used to authenticate
-	 * the user.
-	 */
+	// Represents an asynchronous login/registration task used to authenticate  the user
 	public class UserLoginTask extends AsyncTask<Void, Void, Boolean> implements OnCompleteListener<AuthResult> {
 
 		private final String mEmail;
@@ -342,7 +310,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 			return true;
 		}
 
-		protected void signIn() {
+		private void signIn() {
 			// [START sign_in_with_email]
 			mAuth.signInWithEmailAndPassword(mEmail, mPassword)
 					.addOnCompleteListener(LoginActivity.this, new OnCompleteListener<AuthResult>() {
@@ -359,7 +327,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 			// [END sign_in_with_email]
 		}
 
-		protected void signUp() {
+		private void signUp() {
 			// [START create_user_with_email]
 			mAuth.createUserWithEmailAndPassword(mEmail, mPassword)
 					.addOnCompleteListener(LoginActivity.this, new OnCompleteListener<AuthResult>() {
@@ -401,4 +369,3 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 		public void onComplete(@NonNull Task<AuthResult> task) {}
 	}
 }
-
