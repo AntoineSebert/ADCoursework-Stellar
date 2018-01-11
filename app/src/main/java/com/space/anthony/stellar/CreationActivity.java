@@ -19,7 +19,11 @@ public class CreationActivity extends AppCompatActivity {
 		setContentView(R.layout.activity_creation);
 
 		createSystem();
-
+		try {
+			Thread.sleep(3000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
 		Intent intent = new Intent(CreationActivity.this, LoopActivity.class);
 		finish();
 		startActivity(intent);
