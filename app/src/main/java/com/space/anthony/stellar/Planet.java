@@ -19,6 +19,7 @@ public class Planet {
 		private int orbitalDistance;
 		private short radius;
 		private int velocity;
+		private boolean rotationDirection;
 
 	// getters
 		public String getName() { return name; }
@@ -31,6 +32,7 @@ public class Planet {
 		public long getMass() { return mass; }
 		public int getOrbitalDistance() { return orbitalDistance; }
 		public short getRadius() { return radius; }
+		public boolean isRotationDirection() { return rotationDirection; }
 		public int getVelocity() { return velocity; }
 
 	// setters
@@ -44,9 +46,12 @@ public class Planet {
 		public void setMass(long mass) { this.mass = mass; }
 		public void setOrbitalDistance(int orbitalDistance) { this.orbitalDistance = orbitalDistance; }
 		public void setRadius(short radius) { this.radius = radius; }
+		public void setRotationDirection(boolean rotationDirection) { this.rotationDirection = rotationDirection; }
 		public void setVelocity(int velocity) { this.velocity = velocity; }
 
 	public Planet() {}
+
+
 
 	public class Satellite {
 		// informal

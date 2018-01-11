@@ -1,7 +1,5 @@
 package com.space.anthony.stellar;
 
-import java.util.Map;
-
 /**
  * Created by Anthony on 11/01/2018.
  */
@@ -11,35 +9,25 @@ public class StellarSystem {
 		private String name;
 		private String designation;
 		private Planet [] planets;
+		private Star [] stars;
 	// formal
-		private int brightness;
-		private int color;
-		private Map<String, Float> composition;
-		private short radius;
-		private int temperature;
+		private boolean rotationDirection;
 
 	// getters
 		public String getName() { return name; }
 		public String getDesignation() { return designation; }
 		public Planet[] getPlanets() { return planets; }
+		public Star[] getStars() { return stars; }
 
-		public int getBrightness() { return brightness; }
-		public int getColor() { return color; }
-		public Map<String, Float> getComposition() { return composition; }
-		public short getRadius() { return radius; }
-		public int getTemperature() { return temperature; }
+		public boolean isRotationDirection() { return rotationDirection; }
 
 	// setters
 		public void setName(String name) { this.name = name; }
 		public void setDesignation(String designation) { this.designation = designation; }
 		public void setPlanets(Planet[] planets) { this.planets = planets; }
+		public void setStars(Star[] stars) { this.stars = stars; }
 
-		public void setBrightness(int brightness) { this.brightness = brightness; }
-		public void setColor(int color) { this.color = color; }
-		public void setComposition(Map<String, Float> composition) { this.composition = composition; }
-		public void setRadius(short radius) { this.radius = radius; }
-		public void setTemperature(int temperature) { this.temperature = temperature; }
+		public void setRotationDirection(boolean rotationDirection) { this.rotationDirection = rotationDirection; }
 
 	public StellarSystem() {}
-
 }
