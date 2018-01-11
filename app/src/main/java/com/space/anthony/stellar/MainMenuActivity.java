@@ -48,12 +48,10 @@ public class MainMenuActivity extends AppCompatActivity {
 					public void onDataChange(DataSnapshot dataSnapshot) {
 						String value = dataSnapshot.getValue(String.class);
 						if (value != null) {
-							finish();
-							Intent intent = new Intent(MainMenuActivity.this, MainMenuActivity.class);
-							startActivity(intent);
+							// there is another game
 						}
 						else {
-
+							//there is no other game
 						}
 					}
 					@Override
@@ -61,6 +59,9 @@ public class MainMenuActivity extends AppCompatActivity {
 						Log.w("DATABASE", "Failed to read value.", error.toException());
 					}
 				});
+				Intent intent = new Intent(MainMenuActivity.this, CreationActivity.class);
+				finish();
+				startActivity(intent);
 			}
 		});
 
