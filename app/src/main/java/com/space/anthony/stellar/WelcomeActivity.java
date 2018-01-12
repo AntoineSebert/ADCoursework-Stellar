@@ -17,6 +17,7 @@ public class WelcomeActivity extends AppCompatActivity {
 				Intent intent = new Intent(WelcomeActivity.this, LoginActivity.class);
 				finish();
 				startActivity(intent);
+				Tools.navigate(WelcomeActivity.this, LoginActivity.class);
 			}
 		}, 3000);
 	}

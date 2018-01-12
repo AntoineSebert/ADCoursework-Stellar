@@ -111,9 +111,7 @@ public class ParametersActivity extends AppCompatPreferenceActivity {
 		switch (item.getItemId()) {
 			case android.R.id.home:
 				Toast.makeText(getApplicationContext(),"Back button clicked", Toast.LENGTH_SHORT).show();
-				Intent intent = new Intent(ParametersActivity.this, MainMenuActivity.class);
-				finish();
-				startActivity(intent);
+				Tools.navigate(ParametersActivity.this, MainMenuActivity.class);
 				break;
 		}
 		return true;

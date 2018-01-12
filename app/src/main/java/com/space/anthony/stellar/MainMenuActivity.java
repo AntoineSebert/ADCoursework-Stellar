@@ -59,9 +59,7 @@ public class MainMenuActivity extends AppCompatActivity {
 						Log.w("DATABASE", "Failed to read value.", error.toException());
 					}
 				});
-				Intent intent = new Intent(MainMenuActivity.this, CreationActivity.class);
-				finish();
-				startActivity(intent);
+				Tools.navigate(MainMenuActivity.this, CreationActivity.class);
 			}
 		});
 
@@ -70,9 +68,7 @@ public class MainMenuActivity extends AppCompatActivity {
 		parametersButton.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				finish();
-				Intent intent = new Intent(MainMenuActivity.this, ParametersActivity.class);
-				startActivity(intent);
+				Tools.navigate(MainMenuActivity.this, ParametersActivity.class);
 			}
 		});
 

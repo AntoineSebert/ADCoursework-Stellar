@@ -48,9 +48,7 @@ public class LoopActivity extends AppCompatActivity {
 
 	private void navigationMenu() {
 		// return to main
-		Intent intent = new Intent(LoopActivity.this, MainMenuActivity.class);
-		finish();
-		startActivity(intent);
+		Tools.navigate(LoopActivity.this, MainMenuActivity.class);
 		// par parameters
 		/*
 		Intent intent = new Intent(LoopActivity.this, ParametersActivity.class);

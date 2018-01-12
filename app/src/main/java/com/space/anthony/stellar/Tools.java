@@ -14,9 +14,9 @@ public class Tools {
 		return ourInstance;
 	}
 
-	private Tools() {
-	}
+	private Tools() {}
 
+	// SLEEP ///////////////////////////////////////////////////////////////////////////////////////
 	public static void sleep(int time) {
 		try {
 			Thread.sleep(time);
@@ -24,8 +24,14 @@ public class Tools {
 			e.printStackTrace();
 		}
 	}
-
+	// NAVIGATE ////////////////////////////////////////////////////////////////////////////////////
 	public static <Activity> void navigate(AppCompatActivity fromActivity, Class<Activity> toActivity) {
+		Intent intent = new Intent(fromActivity, toActivity);
+		fromActivity.finish();
+		fromActivity.startActivity(intent);
+	}
+
+	public static <Activity> void navigate(AppCompatPreferenceActivity fromActivity, Class<Activity> toActivity) {
 		Intent intent = new Intent(fromActivity, toActivity);
 		fromActivity.finish();
 		fromActivity.startActivity(intent);
