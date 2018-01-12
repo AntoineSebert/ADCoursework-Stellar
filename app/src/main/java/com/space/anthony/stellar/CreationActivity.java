@@ -35,8 +35,8 @@ public class CreationActivity extends AppCompatActivity {
 		system = new StellarSystem();
 		system.setName("Céléno");
 
-		//database = FirebaseDatabase.getInstance();
-		//myRef = database.getReference("message");
-		//myRef.setValue(system);
+		database = FirebaseDatabase.getInstance();
+		myRef = database.getReference("message");
+		myRef.setValue(system);
 	}
 }

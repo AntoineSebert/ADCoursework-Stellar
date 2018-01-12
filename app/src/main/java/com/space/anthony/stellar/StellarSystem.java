@@ -1,10 +1,8 @@
 package com.space.anthony.stellar;
 
-import android.util.Log;
-import android.widget.Toast;
-
-import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 
 /**
  * Created by Anthony on 11/01/2018.
@@ -15,19 +13,18 @@ public class StellarSystem {
 		// PRIVATE
 			// informal
 				private String name;
-				private Planet [] planets;
-				private Star [] stars;
+				private List<Planet> planets;
+				private List<Star> stars;
 			// formal
 				private String designation;
 				private boolean rotationDirection;
-
 	// METHODS /////////////////////////////////////////////////////////////////////////////////////
 		// PUBLIC
 			// getters
 				// informal
 					public String getName() { return name; }
-					public Planet[] getPlanets() { return planets; }
-					public Star[] getStars() { return stars; }
+					public List<Planet> getPlanets() { return planets; }
+					public List<Star> getStars() { return stars; }
 				// formal
 					public boolean isRotationDirection() { return rotationDirection; }
 			// setters
@@ -35,18 +32,14 @@ public class StellarSystem {
 					public void setName(String name) {
 						this.name = name;
 						createAndSetDesignation(name);
-						stars = new Star[]{};
-						Log.d("==================", Integer.toString(stars.length));
-						/*
-						if (0 < stars.length) {
+						if (0 < stars.size()) {
 							int index = 0;
 							for (Star star: stars)
 								star.setName(name + '-' + (char)(++index + 65));
 						}
-						*/
 					}
-					public void setPlanets(Planet[] planets) { this.planets = planets; }
-					public void setStars(Star[] stars) { this.stars = stars; }
+					public void setPlanets(List<Planet> planets) { this.planets = planets; }
+					public void setStars(List<Star> stars) { this.stars = stars; }
 				// formal
 					public String getDesignation() { return designation; }
 					public void setRotationDirection(boolean rotationDirection) {
@@ -57,5 +50,8 @@ public class StellarSystem {
 				this.designation = "SSC" + '-' + name + '-' + Calendar.getInstance().get(Calendar.YEAR);
 			}
 
-	public StellarSystem() {}
+	public StellarSystem() {
+		planets = new ArrayList<Planet>();
+		stars = new ArrayList<Star>();
+	}
 }
