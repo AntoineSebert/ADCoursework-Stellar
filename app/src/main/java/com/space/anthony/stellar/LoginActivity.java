@@ -338,11 +338,9 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 			mAuthTask = null;
 			showProgress(false);
 
-			if (success) {
-				Intent intent = new Intent(LoginActivity.this, MainMenuActivity.class);
-				finish();
-				startActivity(intent);
-			} else {
+			if (success)
+				Tools.navigate(LoginActivity.this, MainMenuActivity.class);
+			else {
 				mPasswordView.setError(getString(R.string.error_incorrect_password));
 				mPasswordView.requestFocus();
 			}

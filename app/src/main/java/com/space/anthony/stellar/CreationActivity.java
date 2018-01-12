@@ -1,6 +1,5 @@
 package com.space.anthony.stellar;
 
-import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.Toast;
@@ -20,14 +19,9 @@ public class CreationActivity extends AppCompatActivity {
 		setContentView(R.layout.activity_creation);
 
 		createSystem();
-		try {
-			Thread.sleep(3000);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-		Intent intent = new Intent(CreationActivity.this, LoopActivity.class);
-		finish();
-		startActivity(intent);
+		uploadSystem();
+		Tools.sleep(3000);
+		Tools.navigate(CreationActivity.this, LoopActivity.class);
 	}
 
 	private void createSystem() {
@@ -35,8 +29,11 @@ public class CreationActivity extends AppCompatActivity {
 		system = new StellarSystem();
 		system.setName("Céléno");
 
+	}
+
+	private void uploadSystem() {
 		database = FirebaseDatabase.getInstance();
-		myRef = database.getReference("message");
+		myRef = database.getReference("users");
 		myRef.setValue(system);
 	}
 }
