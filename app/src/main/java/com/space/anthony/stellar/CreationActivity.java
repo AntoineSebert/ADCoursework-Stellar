@@ -31,12 +31,12 @@ public class CreationActivity extends AppCompatActivity {
 	}
 
 	private void createSystem() {
+		Toast.makeText(CreationActivity.this, "createSystem", Toast.LENGTH_SHORT).show();
 		system = new StellarSystem();
 		system.setName("Céléno");
 
-		database = FirebaseDatabase.getInstance();
-		myRef = database.getReference("message");
-		myRef.setValue("Hello, World!");
-		Toast.makeText(CreationActivity.this, "creationActivity",Toast.LENGTH_SHORT).show();
+		//database = FirebaseDatabase.getInstance();
+		//myRef = database.getReference("message");
+		//myRef.setValue(system);
 	}
 }

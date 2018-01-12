@@ -21,7 +21,7 @@ public class LoopActivity extends AppCompatActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_loop);
-
+		/*
 		database = FirebaseDatabase.getInstance();
 		myRef = database.getReference("message");
 
@@ -36,13 +36,14 @@ public class LoopActivity extends AppCompatActivity {
 				Log.w("DATABASE", "Failed to read value.", error.toException());
 			}
 		});
+		*/
 
 		mainLoop();
 	}
 
 	private void mainLoop() {
 
-		Toast.makeText(LoopActivity.this, "mainloop", Toast.LENGTH_SHORT).show();
+		//Toast.makeText(LoopActivity.this, "mainloop", Toast.LENGTH_SHORT).show();
 	}
 
 	private void navigationMenu() {

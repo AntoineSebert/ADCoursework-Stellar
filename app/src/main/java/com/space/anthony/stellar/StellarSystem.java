@@ -1,5 +1,9 @@
 package com.space.anthony.stellar;
 
+import android.util.Log;
+import android.widget.Toast;
+
+import java.lang.reflect.Array;
 import java.util.Calendar;
 
 /**
@@ -31,9 +35,15 @@ public class StellarSystem {
 					public void setName(String name) {
 						this.name = name;
 						createAndSetDesignation(name);
-						int index = 0;
-						for (Star star: stars)
-							star.setName(name + '-' + ++index);
+						stars = new Star[]{};
+						Log.d("==================", Integer.toString(stars.length));
+						/*
+						if (0 < stars.length) {
+							int index = 0;
+							for (Star star: stars)
+								star.setName(name + '-' + (char)(++index + 65));
+						}
+						*/
 					}
 					public void setPlanets(Planet[] planets) { this.planets = planets; }
 					public void setStars(Star[] stars) { this.stars = stars; }
