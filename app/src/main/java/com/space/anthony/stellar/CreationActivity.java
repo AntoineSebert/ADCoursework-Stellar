@@ -12,6 +12,7 @@ public class CreationActivity extends AppCompatActivity {
 
 	FirebaseDatabase database;
 	DatabaseReference myRef;
+	StellarSystem system;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +31,9 @@ public class CreationActivity extends AppCompatActivity {
 	}
 
 	private void createSystem() {
+		system = new StellarSystem();
+		system.setName("Céléno");
+
 		database = FirebaseDatabase.getInstance();
 		myRef = database.getReference("message");
 		myRef.setValue("Hello, World!");

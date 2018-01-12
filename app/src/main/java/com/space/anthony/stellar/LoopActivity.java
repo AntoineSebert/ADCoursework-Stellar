@@ -42,7 +42,7 @@ public class LoopActivity extends AppCompatActivity {
 
 	private void mainLoop() {
 
-		Toast.makeText(LoopActivity.this, "mainloop",Toast.LENGTH_SHORT).show();
+		Toast.makeText(LoopActivity.this, "mainloop", Toast.LENGTH_SHORT).show();
 	}
 
 	private void navigationMenu() {

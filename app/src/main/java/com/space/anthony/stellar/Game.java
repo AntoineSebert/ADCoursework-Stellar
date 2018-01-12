@@ -7,4 +7,6 @@ package com.space.anthony.stellar;
 public class Game {
 	StellarSystem system;
 
+	Civilization civ;
+
 }

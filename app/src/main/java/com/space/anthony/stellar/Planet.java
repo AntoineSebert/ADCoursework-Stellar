@@ -20,6 +20,10 @@ public class Planet {
 		private short radius;
 		private int velocity;
 		private boolean rotationDirection;
+	// gameplay
+		private long biomass;
+		private float eventProbability;
+		private float temperature;
 
 	// getters
 		public String getName() { return name; }
