@@ -10,24 +10,33 @@ import java.util.List;
 
 public class StellarSystem {
 	// ATTRIBUTES //////////////////////////////////////////////////////////////////////////////////
-		// PRIVATE
-			// informal
-				private String name;
-				private List<Planet> planets;
-				private List<Star> stars;
-			// formal
-				private String designation;
-				private boolean rotationDirection;
+		// informal --------------------------------------------------------------------------------
+			private String name;
+			private List<Planet> planets;
+			private List<Star> stars;
+		// formal ----------------------------------------------------------------------------------
+			private String designation;
+			private long posx;
+			private long posy;
+			private boolean rotationDirection;
 	// METHODS /////////////////////////////////////////////////////////////////////////////////////
-		// PUBLIC
-			// getters
+		// PUBLIC ==================================================================================
+			// constructor -------------------------------------------------------------------------
+				public StellarSystem() {
+					planets = new ArrayList<>();
+					stars = new ArrayList<>();
+				}
+			// getters -----------------------------------------------------------------------------
 				// informal
 					public String getName() { return name; }
 					public List<Planet> getPlanets() { return planets; }
 					public List<Star> getStars() { return stars; }
 				// formal
+					public String getDesignation() { return designation; }
+					public long getPosx() { return posx; }
+					public long getPosy() { return posy; }
 					public boolean isRotationDirection() { return rotationDirection; }
-			// setters
+			// setters -----------------------------------------------------------------------------
 				// informal
 					public void setName(String name) {
 						this.name = name;
@@ -41,17 +50,13 @@ public class StellarSystem {
 					public void setPlanets(List<Planet> planets) { this.planets = planets; }
 					public void setStars(List<Star> stars) { this.stars = stars; }
 				// formal
-					public String getDesignation() { return designation; }
+					public void setPosx(long posx) { this.posx = posx; }
+					public void setPosy(long posy) { this.posy = posy; }
 					public void setRotationDirection(boolean rotationDirection) {
 						this.rotationDirection = rotationDirection;
 					}
-		// PRIVATE
+		// PRIVATE =================================================================================
 			private void createAndSetDesignation(String name) {
-				this.designation = "SSC" + '-' + name + '-' + Calendar.getInstance().get(Calendar.YEAR);
+				this.designation = "SSC-" + name + '-' + Calendar.getInstance().get(Calendar.YEAR);
 			}
-
-	public StellarSystem() {
-		planets = new ArrayList<Planet>();
-		stars = new ArrayList<Star>();
-	}
 }

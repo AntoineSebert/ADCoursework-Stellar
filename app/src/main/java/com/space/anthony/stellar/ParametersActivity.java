@@ -17,7 +17,6 @@ import android.preference.PreferenceManager;
 import android.preference.RingtonePreference;
 import android.text.TextUtils;
 import android.view.MenuItem;
-import android.widget.Toast;
 
 import java.util.List;
 
@@ -110,7 +109,7 @@ public class ParametersActivity extends AppCompatPreferenceActivity {
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
 			case android.R.id.home:
-				Toast.makeText(getApplicationContext(),"Back button clicked", Toast.LENGTH_SHORT).show();
+				Tools.showToast(ParametersActivity.this, "Back button clicked");
 				Tools.navigate(ParametersActivity.this, MainMenuActivity.class);
 				break;
 		}

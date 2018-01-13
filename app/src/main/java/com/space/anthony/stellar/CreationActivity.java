@@ -2,7 +2,6 @@ package com.space.anthony.stellar;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.widget.Toast;
 
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -11,6 +10,7 @@ public class CreationActivity extends AppCompatActivity {
 
 	FirebaseDatabase database;
 	DatabaseReference myRef;
+	Game game;
 	StellarSystem system;
 
 	@Override
@@ -20,15 +20,16 @@ public class CreationActivity extends AppCompatActivity {
 
 		createSystem();
 		uploadSystem();
+
 		Tools.sleep(3000);
 		Tools.navigate(CreationActivity.this, LoopActivity.class);
 	}
 
 	private void createSystem() {
-		Toast.makeText(CreationActivity.this, "createSystem", Toast.LENGTH_SHORT).show();
+		game = new Game();
 		system = new StellarSystem();
 		system.setName("Céléno");
-
+		Tools.showToast(this, system.getDesignation());
 	}
 
 	private void uploadSystem() {
