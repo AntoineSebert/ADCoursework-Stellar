@@ -1,5 +1,7 @@
 package com.space.anthony.stellar;
 
+import android.util.Log;
+
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
@@ -40,11 +42,16 @@ public class StellarSystem {
 				// informal
 					public void setName(String name) {
 						this.name = name;
-						createAndSetDesignation(name);
+						createAndSetDesignation();
 						if (0 < stars.size()) {
 							int index = 0;
 							for (Star star: stars)
 								star.setName(name + '-' + (char)(++index + 65));
+						}
+						if (0 < planets.size()) {
+							int index = 0;
+							for (Planet planet : planets)
+								planet.setName(name + '-' + Tools.integerToRomanNumeral(index + 1));
 						}
 					}
 					public void setPlanets(List<Planet> planets) { this.planets = planets; }
@@ -55,8 +62,37 @@ public class StellarSystem {
 					public void setRotationDirection(boolean rotationDirection) {
 						this.rotationDirection = rotationDirection;
 					}
+			// modifier ----------------------------------------------------------------------------
+				public void addStar() {
+					if (name != null) {
+						stars.add(new Star());
+						stars.get(stars.size() - 1).setName(name + '-' + (char)(stars.size() + 64));
+					}
+					else
+						Log.e(this.getClass().toString(), "Stellar system name has not been set");
+				}
+				public void addPlanet() {
+					if (name != null) {
+						planets.add(new Planet());
+						planets.get(planets.size() - 1).setName(name + '-' + Tools.integerToRomanNumeral(planets.size()));
+					}
+					else
+						Log.e(this.getClass().toString(), "Stellar system name has not been set");
+				}
+			// display -----------------------------------------------------------------------------
+				public void displayConsole() {
+					Log.d("=====",name + " : " + designation + '\n');
+					if (0 < stars.size()) {
+						for (Star star: stars)
+							Log.d("=====", star.getName() + " : " + star.getDesignation() + '\n');
+					}
+					if (0 < planets.size()) {
+						for (Planet planet : planets)
+							Log.d("=====", planet.getName() + " : " + planet.getDesignation() + '\n');
+					}
+				}
 		// PRIVATE =================================================================================
-			private void createAndSetDesignation(String name) {
-				this.designation = "SSC-" + name + '-' + Calendar.getInstance().get(Calendar.YEAR);
+			private void createAndSetDesignation() {
+				this.designation = Game.getDesignationHead() + '-' + name;
 			}
 }

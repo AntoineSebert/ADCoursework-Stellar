@@ -17,7 +17,7 @@ public class Planet {
 			private Map<String, Float> composition;
 			private long mass;
 			private int orbitalDistance;
-			private short radius;
+			private int radius;
 			private int velocity;
 			private boolean rotationDirection;
 		// gameplay --------------------------------------------------------------------------------
@@ -43,20 +43,32 @@ public class Planet {
 					public Map<String, Float> getComposition() { return composition; }
 					public long getMass() { return mass; }
 					public int getOrbitalDistance() { return orbitalDistance; }
-					public short getRadius() { return radius; }
+					public int getRadius() { return radius; }
 					public boolean isRotationDirection() { return rotationDirection; }
 					public int getVelocity() { return velocity; }
 			// setters -----------------------------------------------------------------------------
 				// informal
-					public void setName(String name) { this.name = name; }
-					public void setDesignation(String designation) { this.designation = designation; }
+					public void setName(String name) {
+						this.name = name;
+						createAndSetDesignation();
+					}
 					public void setSatellite(Satellite[] satellites) { this.satellites = satellites; }
 				// formal
 					public void setColor(int color) { this.color = color; }
-					public void setComposition(Map<String, Float> composition) { this.composition = composition; }
+					public void setComposition(Map<String, Float> composition) {
+						this.composition = composition;
+					}
 					public void setMass(long mass) { this.mass = mass; }
-					public void setOrbitalDistance(int orbitalDistance) { this.orbitalDistance = orbitalDistance; }
-					public void setRadius(short radius) { this.radius = radius; }
-					public void setRotationDirection(boolean rotationDirection) { this.rotationDirection = rotationDirection; }
+					public void setOrbitalDistance(int orbitalDistance) {
+						this.orbitalDistance = orbitalDistance;
+					}
+					public void setRadius(int radius) { this.radius = radius; }
+					public void setRotationDirection(boolean rotationDirection) {
+						this.rotationDirection = rotationDirection;
+					}
 					public void setVelocity(int velocity) { this.velocity = velocity; }
+	// PRIVATE =================================================================================
+		private void createAndSetDesignation() {
+			this.designation = Game.getDesignationHead() + '-' + name;
+		}
 }

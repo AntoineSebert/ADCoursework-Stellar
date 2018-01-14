@@ -2,39 +2,57 @@ package com.space.anthony.stellar;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-public class CreationActivity extends AppCompatActivity {
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
-	FirebaseDatabase database;
-	DatabaseReference myRef;
-	Game game;
-	StellarSystem system;
+public class CreationActivity extends AppCompatActivity {
+	private FirebaseDatabase database;
+	private DatabaseReference myRef;
+	private Game game;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_creation);
-
-		createSystem();
-		uploadSystem();
+		createGame();
+		uploadGame();
 
 		Tools.sleep(3000);
 		Tools.navigate(CreationActivity.this, LoopActivity.class);
 	}
 
-	private void createSystem() {
+	private void createGame() {
 		game = new Game();
-		system = new StellarSystem();
-		system.setName("Céléno");
-		Tools.showToast(this, system.getDesignation());
+		List<StellarSystem> systems = createSystemsList();
+		game.setSystems(systems);
+
+	}
+	private List<StellarSystem> createSystemsList() {
+		StellarSystem newSystem = createSystem();
+
+		return new ArrayList<>(Arrays.asList(newSystem));
+	}
+	private StellarSystem createSystem() {
+		StellarSystem newSystem = new StellarSystem();
+		newSystem.setName("Céléno");
+		newSystem.addStar();
+		newSystem.addPlanet();
+
+		newSystem.displayConsole();
+
+		return newSystem;
 	}
 
-	private void uploadSystem() {
+	private void uploadGame() {
 		database = FirebaseDatabase.getInstance();
 		myRef = database.getReference("users");
-		myRef.setValue(system);
+		myRef.setValue(game);
+		//Tools.showToast(this, newSystem.getDesignation());
 	}
 }
