@@ -67,8 +67,8 @@ public class Planet {
 						this.rotationDirection = rotationDirection;
 					}
 					public void setVelocity(int velocity) { this.velocity = velocity; }
-	// PRIVATE =================================================================================
-		private void createAndSetDesignation() {
-			this.designation = Game.getDesignationHead() + '-' + name;
-		}
+		// PRIVATE =================================================================================
+			private void createAndSetDesignation() {
+				this.designation = Game.getDesignationHead() + '-' + name;
+			}
 }

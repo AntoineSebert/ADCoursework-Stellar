@@ -2,7 +2,6 @@ package com.space.anthony.stellar;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -20,6 +19,11 @@ public class CreationActivity extends AppCompatActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_creation);
+	}
+
+	@Override
+	protected void onStart() {
+		super.onStart();
 		createGame();
 		uploadGame();
 
@@ -42,6 +46,10 @@ public class CreationActivity extends AppCompatActivity {
 		StellarSystem newSystem = new StellarSystem();
 		newSystem.setName("Céléno");
 		newSystem.addStar();
+		newSystem.addStar();
+		newSystem.addPlanet();
+		newSystem.addPlanet();
+		newSystem.addPlanet();
 		newSystem.addPlanet();
 
 		newSystem.displayConsole();
@@ -53,6 +61,5 @@ public class CreationActivity extends AppCompatActivity {
 		database = FirebaseDatabase.getInstance();
 		myRef = database.getReference("users");
 		myRef.setValue(game);
-		//Tools.showToast(this, newSystem.getDesignation());
 	}
 }
